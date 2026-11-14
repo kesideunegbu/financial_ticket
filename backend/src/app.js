@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const path = require('node:path');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const authRoutes = require('./routes/auth');
+const chatRoutes = require('./routes/chat');
 
 const SPENDING_URL = process.env.SPENDING_URL || 'http://127.0.0.1:8000';
 
@@ -29,6 +30,7 @@ app.use(express.json({ limit: '10kb' }));
 app.use(cookieParser());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/chat', chatRoutes);
 
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 

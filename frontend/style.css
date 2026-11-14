@@ -249,3 +249,253 @@ body {
     }
 }
 
+
+/* ===================== Chat ===================== */
+
+/* Elements with the "hidden" attribute stay hidden even if a rule sets display */
+[hidden] {
+    display: none !important;
+}
+
+.content {
+    min-height: 0; /* lets the message list scroll instead of growing the page */
+}
+
+.welcome {
+    text-align: center;
+}
+
+/* Once a conversation starts: messages fill the space, input sits at the bottom */
+.content.chatting {
+    justify-content: flex-start;
+}
+
+.content.chatting .welcome,
+.content.chatting .suggestions {
+    display: none;
+}
+
+.messages {
+    flex: 1;
+    width: 100%;
+    max-width: 760px;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 10px 4px 20px;
+}
+
+.message {
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.message.user {
+    align-self: flex-end;
+    max-width: 80%;
+    background-color: #303030;
+    padding: 10px 16px;
+    border-radius: 18px;
+    white-space: pre-wrap;
+}
+
+.message.model {
+    align-self: flex-start;
+    max-width: 100%;
+}
+
+.message.model p,
+.message.model ul,
+.message.model ol,
+.message.model pre {
+    margin-bottom: 10px;
+}
+
+.message.model ul,
+.message.model ol {
+    padding-left: 22px;
+}
+
+.message.model li {
+    margin-bottom: 4px;
+}
+
+.message.model h3,
+.message.model h4,
+.message.model h5,
+.message.model h6 {
+    margin: 14px 0 6px;
+}
+
+.message.model code {
+    background-color: #1f1f1f;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.message.model pre {
+    background-color: #1f1f1f;
+    padding: 12px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.message.model pre code {
+    padding: 0;
+}
+
+.message.thinking {
+    color: #aaa;
+    font-style: italic;
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    50% { opacity: 0.4; }
+}
+
+.message.error {
+    color: #f87171;
+}
+
+.message.notice {
+    align-self: center;
+    color: #ccc;
+}
+
+.message.notice a {
+    color: #4ade80;
+}
+
+.chat-box input:disabled {
+    opacity: 0.6;
+}
+
+.send-btn {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.send-btn:disabled,
+.suggestions button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+/* Recent Chats */
+.history {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.history .history-note {
+    padding: 0 12px;
+    font-size: 13px;
+    color: #888;
+    cursor: default;
+}
+
+.history .history-note:hover {
+    background: none;
+}
+
+.conversation-list {
+    list-style: none;
+}
+
+.conversation-list li {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.conversation-list li:hover,
+.conversation-list li.active {
+    background-color: #303030;
+}
+
+.conversation-title {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+
+    background: none;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.conversation-delete {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 18px;
+    padding: 0 10px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.conversation-list li:hover .conversation-delete,
+.conversation-delete:focus-visible {
+    visibility: visible;
+}
+
+.conversation-delete:hover {
+    color: #f87171;
+}
+
+/* Settings */
+.settings-button {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.settings-button:hover {
+    background-color: #303030;
+}
+
+.settings-panel {
+    background-color: #262626;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.setting {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.setting input {
+    margin-top: 2px;
+}
+
+.sidebar-bottom .setting-help {
+    color: #888;
+    font-size: 12px;
+    margin-top: 8px;
+    padding: 0;
+    cursor: default;
+}

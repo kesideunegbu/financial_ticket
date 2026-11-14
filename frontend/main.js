@@ -1,18 +1,19 @@
-// Homepage: if the user is logged in, show their name and a Log Out button
-// instead of Log In / Sign Up.
+// Homepage: checks who is logged in, updates the navbar, and starts the chat.
+import { initChat } from './chat.js';
 
 const navButtons = document.querySelector('.nav-buttons');
 
-async function showLoggedInUser() {
-  let user;
+async function getCurrentUser() {
   try {
     const res = await fetch('/api/auth/me');
-    if (!res.ok) return; // not logged in: keep Log In / Sign Up
-    user = (await res.json()).user;
+    if (!res.ok) return null; // not logged in
+    return (await res.json()).user;
   } catch {
-    return; // backend not reachable: leave the page as it is
+    return null; // backend not reachable
   }
+}
 
+function showLoggedInUser(user) {
   const name = document.createElement('span');
   name.className = 'user-name';
   name.textContent = `Hi, ${user.name || user.email}`; // textContent, never innerHTML, for user data
@@ -25,11 +26,13 @@ async function showLoggedInUser() {
     try {
       await fetch('/api/auth/logout', { method: 'POST' });
     } finally {
-      window.location.reload();
+      window.location.href = 'index.html'; // also clears any open chat from the address bar
     }
   });
 
   navButtons.replaceChildren(name, logoutButton);
 }
 
-showLoggedInUser();
+const user = await getCurrentUser();
+if (user) showLoggedInUser(user);
+initChat(user);

@@ -17,21 +17,30 @@
 
         <h2>The Financial Ticket</h2>
 
-        <button class="new-chat">
+        <button class="new-chat" type="button">
             + New Chat
         </button>
 
         <div class="history">
             <h3>Recent Chats</h3>
 
-            <p>How to save money</p>
-            <p>Understanding credit</p>
-            <p>Budget planning</p>
+            <p class="history-note" id="historyNote"></p>
+            <ul class="conversation-list" id="conversationList"></ul>
         </div>
 
         <div class="sidebar-bottom">
-            <p>⚙ Settings</p>
-            
+            <div class="settings-panel" id="settingsPanel" hidden>
+                <label class="setting">
+                    <input type="checkbox" id="shareSpending" checked>
+                    <span>Personalize advice using my Savings Tracker data</span>
+                </label>
+                <p class="setting-help">
+                    The assistant sees your income and spending totals by category,
+                    never individual purchases or notes.
+                </p>
+            </div>
+            <button class="settings-button" id="settingsButton" type="button"
+                    aria-expanded="false" aria-controls="settingsPanel">⚙ Settings</button>
         </div>
 
     </div>
@@ -52,33 +61,42 @@
         <!-- Center Content -->
         <div class="content">
 
-            <h1>How can I help you today?</h1>
+            <div class="welcome">
+                <h1>How can I help you today?</h1>
 
-            <p class="subtitle">
-                Your AI assistant for financial literacy, Investing, Student Loans, Savings Tracker!
-            </p>
+                <p class="subtitle">
+                    Your AI assistant for financial literacy, Investing, Student Loans, Savings Tracker!
+                </p>
+            </div>
+
+            <!-- Conversation (shown once a chat starts) -->
+            <div class="messages" id="messages" aria-live="polite" hidden></div>
 
             <!-- Chat Input -->
-            <div class="chat-box">
+            <form class="chat-box" id="chatForm">
 
                 <input type="text"
+                    id="chatInput"
+                    maxlength="2000"
+                    autocomplete="off"
+                    aria-label="Your question"
                     placeholder="Ask a question to guide your financial journey!"
                 >
 
-                <button class="send-btn">❯❯❯❯</button>
+                <button class="send-btn" id="sendButton" type="submit" aria-label="Send">➤</button>
 
-            </div>
+            </form>
 
             <!-- Suggested Questions -->
             <div class="suggestions">
 
-                <button>💰 Financial Tips</button>
+                <button type="button" data-prompt="What are some practical tips to get better with money?">💰 Financial Tips</button>
 
-                <button>📈 Investing</button>
+                <button type="button" data-prompt="How should a beginner start investing?">📈 Investing</button>
 
-                <button>💲 Student Loans</button>
+                <button type="button" data-prompt="How do student loans work, and what's the smartest way to pay them off?">💲 Student Loans</button>
 
-                <button>📊 Savings Tracker</button>
+                <button type="button" data-prompt="Based on my spending, where can I save more money?">📊 Savings Tracker</button>
 
             </div>
 
@@ -94,7 +112,7 @@
 
     </div>
 
-    <script src="main.js"></script>
+    <script type="module" src="main.js"></script>
 
 </body>
 </html>

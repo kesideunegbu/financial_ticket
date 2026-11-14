@@ -163,3 +163,27 @@ def test_monthly_summary_fills_empty_months(client):
 def test_categories_are_public(client):
     cats = client.get("/api/spending/categories").json()
     assert "Food" in cats["expense"] and "Salary" in cats["income"]
+
+
+def test_connection_works_across_threads(tmp_path, monkeypatch):
+    """FastAPI can run a request's login check and endpoint on different threads.
+    Regression: summary requests failed with 'SQLite objects created in a thread
+    can only be used in that same thread'."""
+    import threading
+    from app.db import connect
+
+    monkeypatch.setenv("DB_FILE", str(tmp_path / "threads.db"))
+    conn = connect()
+    errors = []
+
+    def use_connection():
+        try:
+            conn.execute("SELECT 1").fetchone()
+        except Exception as e:  # noqa: BLE001
+            errors.append(e)
+
+    t = threading.Thread(target=use_connection)
+    t.start()
+    t.join()
+    conn.close()
+    assert errors == []

@@ -15,7 +15,10 @@ def db_path() -> str:
 
 
 def connect() -> sqlite3.Connection:
-    conn = sqlite3.connect(db_path(), timeout=5)
+    # FastAPI may run a request's dependencies (e.g. the login check) and its endpoint on
+    # different worker threads. Each request gets its own connection and those steps run
+    # one after another, never at the same time, so sharing it across threads is safe.
+    conn = sqlite3.connect(db_path(), timeout=5, check_same_thread=False)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
     conn.execute("PRAGMA busy_timeout = 5000")

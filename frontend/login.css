@@ -80,3 +80,14 @@ button:hover {
     color: red;
     margin-top: 15px;
 }
+
+/* "Don't have an account? Sign up" / "Already have an account? Log in" */
+.login-container .switch-auth {
+    margin-bottom: 0;
+}
+
+.login-container .switch-auth a {
+    display: inline;
+    margin-top: 0;
+    font-weight: bold;
+}

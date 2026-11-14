@@ -24,7 +24,7 @@ function buildSystemInstruction({ userName, spendingContext }) {
     parts.push(`The user's own data from the site's spending tracker (use it to personalize advice when relevant; refer to their actual numbers, and never invent figures that aren't here):
 ${spendingContext}`);
   } else {
-    parts.push(`You don't have access to the user's spending data in this conversation. If personalized advice would need it, ask about their situation, or mention they can log income and expenses in the Savings Tracker.`);
+    parts.push(`You don't have access to the user's spending data in this conversation. If personalized advice would need it, ask about their situation, or mention they can log income and expenses in the Spending Tracker.`);
   }
 
   return parts.join('\n\n');

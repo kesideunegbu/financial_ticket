@@ -33,6 +33,15 @@ function showLoggedInUser(user) {
   navButtons.replaceChildren(name, logoutButton);
 }
 
+// The Spending Tracker suggestion opens the tracker page instead of asking the AI.
+const spendingTrackerButton = Array.from(document.querySelectorAll('.suggestions button'))
+  .find(button => button.textContent.includes('Spending Tracker'));
+if (spendingTrackerButton) {
+  spendingTrackerButton.addEventListener('click', () => {
+    window.location.href = 'sptracker.html';
+  });
+}
+
 const user = await getCurrentUser();
 if (user) showLoggedInUser(user);
 initChat(user);

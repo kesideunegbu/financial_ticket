@@ -14,9 +14,9 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-
+    <div class="goldentext">
         <h2>The Financial Ticket</h2>
-
+    </div>
         <button class="new-chat" type="button">
             + New Chat
         </button>
@@ -32,7 +32,7 @@
             <div class="settings-panel" id="settingsPanel" hidden>
                 <label class="setting">
                     <input type="checkbox" id="shareSpending" checked>
-                    <span>Personalize advice using my Savings Tracker data</span>
+                    <span>Personalize advice using my Spending Tracker data</span>
                 </label>
                 <p class="setting-help">
                     The assistant sees your income and spending totals by category,
@@ -50,22 +50,30 @@
 
         <!-- Top Navigation -->
         <div class="navbar">
+            <div class="goldentext">
             <h3>The Financial Ticket</h3>
-
+            </div>    
             <div class="nav-buttons">
                 <a href="login.html">Log In</a>
                 <a href="signup.html">Sign Up</a>
             </div>
+            
         </div>
 
         <!-- Center Content -->
         <div class="content">
 
+            <!-- Welcome screen (hidden once a chat starts) -->
             <div class="welcome">
+                <div class="welcome-image">
+                    <img src="https://www.pngkey.com/png/full/100-1000951_golden-ticket-png.png"
+                         alt="The Financial Ticket Logo">
+                </div>
+
                 <h1>How can I help you today?</h1>
 
                 <p class="subtitle">
-                    Your AI assistant for financial literacy, Investing, Student Loans, Savings Tracker!
+                    Your AI assistant for financial literacy, Investing, Student Loans, Spending Tracker!
                 </p>
             </div>
 
@@ -96,7 +104,8 @@
 
                 <button type="button" data-prompt="How do student loans work, and what's the smartest way to pay them off?">💲 Student Loans</button>
 
-                <button type="button" data-prompt="Based on my spending, where can I save more money?">📊 Savings Tracker</button>
+                <!-- Opens the tracker page (main.js), so no data-prompt -->
+                <button type="button">📊 Spending Tracker</button>
 
             </div>
 

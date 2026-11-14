@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spending Tracker | The Financial Ticket</title>
+  <link rel="stylesheet" href="sptracker.css">
+  <script src="sptracker.js" defer></script>
+</head>
+<body>
+  <header><a class="brand" href="index.html"><span class="ticket">FT</span> The Financial Ticket</a><a class="back" href="index.html">← Back to assistant</a></header>
+  <main>
+    <div class="heading"><div><p class="eyebrow">YOUR MONEY, AT A GLANCE</p><h1>Spending tracker<span>.</span></h1><p class="muted">Small habits. A clearer picture. See where your money goes.</p></div><span class="badge">Saved to your account</span></div>
+    <div class="toolbar"><label for="month">Showing <input type="month" id="month"></label><button id="sample" class="secondary">Load sample data</button></div>
+    <section class="stats" aria-label="Spending summary"><article><p>Total spent</p><h2 id="total">$0.00</h2><small id="count-detail">In the selected month</small></article><article><p>Income</p><h2 id="income">$0.00</h2><small id="net-detail">Add income to see what you keep</small></article><article><p>Top category</p><h2 id="top">—</h2><small id="top-detail">Add an expense to get started</small></article></section>
+    <div class="workspace">
+      <section class="panel entry"><p class="eyebrow">MAKE IT A HABIT</p><h2>Add a transaction</h2><p class="muted">Capture the little things, too, and what comes in.</p>
+        <form id="expense-form"><label>Type<select id="type"><option value="expense">Expense</option><option value="income">Income</option></select></label><label>Description<input id="description" placeholder="e.g. Lunch with friends" maxlength="200" required></label><label>Amount ($)<input id="amount" type="number" min="0.01" max="9999999" step="0.01" placeholder="0.00" required></label><label>Category<select id="category" required></select></label><label>Date<input id="date" type="date" required></label><button class="primary" id="submit-button" type="submit">+ Add expense</button></form>
+        <p class="note">Saved to your account, so it&#39;s there on any device. The assistant uses your monthly totals for personalized tips (you can turn that off in Settings). This doesn&#39;t connect to a bank.</p>
+      </section>
+      <div class="insights"><section class="panel"><div class="section-title"><h2>Spending by category</h2><span class="muted">Monthly breakdown</span></div><div id="category-chart" class="category-chart"></div></section><section class="panel"><div class="section-title"><h2>Daily spending</h2><span class="muted">Across the month</span></div><div id="daily-chart" class="daily-chart"></div></section></div>
+    </div>
+    <section class="panel transactions"><div class="section-title"><h2>Transactions</h2><span class="muted">Most recent first</span></div><div class="table-wrap"><table><thead><tr><th>Description</th><th>Category</th><th>Date</th><th class="money">Amount</th><th><span class="sr-only">Actions</span></th></tr></thead><tbody id="transactions"></tbody></table></div><p id="empty" class="empty">A fresh start. Add your first expense or load sample data.</p></section>
+    <p id="status" role="status" aria-live="polite"></p>
+    <footer>The Financial Ticket · A little awareness goes a long way.</footer>
+  </main>
+</body>
+</html>

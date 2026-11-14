@@ -33,3 +33,11 @@ async function showLoggedInUser() {
 }
 
 showLoggedInUser();
+
+const spendingTrackerButton = Array.from(document.querySelectorAll('.suggestions button'))
+  .find(button => button.textContent.includes('Spending Tracker'));
+if (spendingTrackerButton) {
+  spendingTrackerButton.addEventListener('click', () => {
+    window.location.href = 'sptracker.html';
+  });
+}

@@ -10,6 +10,7 @@ const db = new DatabaseSync(dbFile);
 
 db.exec(`
   PRAGMA foreign_keys = ON;
+  PRAGMA busy_timeout = 5000; -- the Python spending service uses this database too
 
   CREATE TABLE IF NOT EXISTS users (
     id            INTEGER PRIMARY KEY AUTOINCREMENT,

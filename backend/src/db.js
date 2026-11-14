@@ -27,6 +27,33 @@ db.exec(`
   );
 
   CREATE INDEX IF NOT EXISTS idx_sessions_user ON sessions(user_id);
+
+  -- Chat with the AI assistant
+  CREATE TABLE IF NOT EXISTS conversations (
+    id         INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id    INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    title      TEXT NOT NULL,
+    created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE INDEX IF NOT EXISTS idx_conversations_user ON conversations(user_id, updated_at);
+
+  CREATE TABLE IF NOT EXISTS messages (
+    id              INTEGER PRIMARY KEY AUTOINCREMENT,
+    conversation_id INTEGER NOT NULL REFERENCES conversations(id) ON DELETE CASCADE,
+    role            TEXT NOT NULL CHECK (role IN ('user', 'model')),
+    content         TEXT NOT NULL,
+    created_at      TEXT NOT NULL DEFAULT (datetime('now'))
+  );
+
+  CREATE INDEX IF NOT EXISTS idx_messages_conversation ON messages(conversation_id, id);
+
+  -- Per-user preferences. No row = defaults.
+  CREATE TABLE IF NOT EXISTS user_settings (
+    user_id        INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+    share_spending INTEGER NOT NULL DEFAULT 1 -- let the AI see a summary of the spending tracker
+  );
 `);
 
 module.exports = db;

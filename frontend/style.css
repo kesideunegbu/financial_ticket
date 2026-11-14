@@ -1,0 +1,234 @@
+
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2c2c2c;
+    color: white;
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #171717;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+/* New Chat Button */
+.new-chat {
+    background-color: #303030;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.new-chat:hover {
+    background-color: #444;
+}
+
+/* Chat History */
+.history {
+    margin-top: 30px;
+}
+
+.history h3 {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+.history p {
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.history p:hover {
+    background-color: #303030;
+}
+
+/* Sidebar Bottom */
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+.sidebar-bottom p {
+    padding: 12px;
+    cursor: pointer;
+}
+
+/* Main Section */
+.main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+}
+
+.nav-buttons button {
+    padding: 10px 18px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.nav-buttons button:first-child {
+    background-color: white;
+    color: black;
+}
+
+.nav-buttons button:last-child {
+    background-color: #303030;
+    color: white;
+}
+
+/* Center Content */
+.content {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.content h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+/* Chat Input */
+.chat-box {
+    width: 100%;
+    max-width: 700px;
+
+    background-color: #303030;
+    padding: 15px;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+}
+
+.chat-box input {
+    flex: 1;
+    min-width: 0;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    color: white;
+    font-size: 16px;
+}
+
+.chat-box input::placeholder {
+    color: #aaa;
+}
+
+/* Send Button */
+.send-btn {
+    background-color: white;
+    color: black;
+
+    border: none;
+    border-radius: 50%;
+
+    width: 35px;
+    height: 35px;
+
+    cursor: pointer;
+}
+
+/* Suggested Questions */
+.suggestions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.suggestions button {
+    background-color: #303030;
+    color: white;
+
+    border: 1px solid #444;
+    padding: 12px 18px;
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+.suggestions button:hover {
+    background-color: #444;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+    color: #888;
+}
+
+/* Mobile Screen */
+@media (max-width: 768px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .content h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .subtitle {
+        text-align: center;
+    }
+
+    .navbar {
+        padding: 15px;
+    }
+
+    .nav-buttons button {
+        padding: 8px 12px;
+        margin-left: 4px;
+    }
+}
+

@@ -9,6 +9,8 @@ npm run dev     # http://localhost:3000, restarts on file changes
 npm test
 ```
 
+Spending tracker requests (`/api/spending/*`) are forwarded to the Python service in [`../spending`](../spending/README.md). Start it too if you need those routes.
+
 The server also serves `../frontend`, so open http://localhost:3000 and the login page and API share an origin (no CORS setup needed).
 
 ## Auth API
